@@ -7,6 +7,11 @@ import { Buffer } from 'buffer'
 const DEFAULT_MIXPANEL_API_URL = 'https://api.mixpanel.com'
 const DEFAULT_STORAGE_KEY = 'mixpanel:super:props'
 
+enum Endpoint {
+  people = 'engage',
+  events = 'track',
+}
+
 type Props = Record<string, unknown>
 
 export interface ExpoMixpanelAnalyticsConfig {
@@ -105,31 +110,31 @@ export class ExpoMixpanelAnalytics {
   }
 
   people_set (props: unknown) {
-    this._people('set', props)
+    void this._pushPeople('set', props)
   }
 
   people_set_once (props: unknown) {
-    this._people('set_once', props)
+    void this._pushPeople('set_once', props)
   }
 
   people_unset (props: unknown) {
-    this._people('unset', props)
+    void this._pushPeople('unset', props)
   }
 
   people_increment (props: unknown) {
-    this._people('add', props)
+    void this._pushPeople('add', props)
   }
 
   people_append (props: unknown) {
-    this._people('append', props)
+    void this._pushPeople('append', props)
   }
 
   people_union (props: unknown) {
-    this._people('union', props)
+    void this._pushPeople('union', props)
   }
 
   people_delete_user () {
-    this._people('delete', '')
+    void this._pushPeople('delete', '')
   }
 
   // ===========================================================================================
@@ -143,15 +148,15 @@ export class ExpoMixpanelAnalytics {
     }
   }
 
-  private _people (operation: string, props: unknown) {
+  private async _pushPeople (action: string, props: unknown) {
     if (this.userId) {
       const data = {
         $token: this.token,
         $distinct_id: this.userId,
-        [`$${operation}`]: props
+        [`$${action}`]: props
       }
 
-      void this._push(data)
+      await this._push(Endpoint.people, data)
     }
   }
 
@@ -170,12 +175,12 @@ export class ExpoMixpanelAnalytics {
       }
     }
 
-    return this._push(data)
+    return this._push(Endpoint.events, data)
   }
 
-  private async _push (data: unknown) {
+  private async _push (endpoint: Endpoint, data: unknown) {
     const base64Data = new Buffer(JSON.stringify(data)).toString('base64')
-    return fetch(`${this.apiUrl}/engage/?data=${base64Data}`)
+    return fetch(`${this.apiUrl}/${endpoint}/?data=${base64Data}`)
   }
 }
 
