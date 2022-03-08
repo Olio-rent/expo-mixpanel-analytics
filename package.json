@@ -1,7 +1,12 @@
 {
-  "name": "@bothrs/expo-mixpanel-analytics",
-  "version": "1.1.1",
-  "description": "Mixpanel integration for use with React Native apps built on Expo 39.",
+  "name": "@flownform/expo-mixpanel-analytics",
+  "authors": [
+    "Ben Awad",
+    "Ivan Šakić"
+  ],
+  "license": "MIT",
+  "version": "1.1.2",
+  "description": "Mixpanel integration for use with React Native apps built on Expo 41.",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "scripts": {
@@ -11,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bothrs/expo-mixpanel-analytics.git"
+    "url": "git+https://github.com/flownform/expo-mixpanel-analytics.git"
   },
   "keywords": [
     "react",
@@ -23,25 +28,21 @@
   "files": [
     "dist/src"
   ],
-  "author": "Ben Awad",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/codekadiya/expo-mixpanel-analytics/issues"
-  },
   "dependencies": {
-    "@react-native-community/async-storage": "1",
-    "buffer": "6"
+    "@react-native-async-storage/async-storage": "1.16.1",
+    "buffer": "6.0.3",
+    "expo-device": "^4.1.1",
+    "expo-constants": "13.0.2"
   },
   "devDependencies": {
-    "@types/react-native": "^0.62.18",
-    "expo-constants": "9",
-    "rimraf": "3",
-    "tslib": "^2.0.3",
-    "typescript": "3.9"
+    "@types/react-native": "0.67.2",
+    "rimraf": "3.0.2",
+    "tslib": "2.3.1",
+    "typescript": "4.6.2"
   },
   "peerDependencies": {
-    "expo-constants": "9",
-    "react": "16",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz"
+    "expo": "41.0.1",
+    "react": "17.0.2",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-41.0.0.tar.gz"
   }
 }
