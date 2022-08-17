@@ -1,5 +1,5 @@
 {
-  "name": "@flownform/expo-mixpanel-analytics",
+  "name": "@olio-rent/expo-mixpanel-analytics",
   "authors": [
     "Ben Awad",
     "Ivan Šakić"
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/flownform/expo-mixpanel-analytics.git"
+    "url": "git+https://github.com/Olio-rent/expo-mixpanel-analytics.git"
   },
   "keywords": [
     "react",
