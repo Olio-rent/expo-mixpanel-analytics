@@ -8,14 +8,14 @@ Forked from `@bothrs/expo-mixpanel-analytics` to add support for Expo 41.
 ## Installation
 
 ```
-npm install @flownform/expo-mixpanel-analytics --save
+npm install @olio-rent/expo-mixpanel-analytics --save
 ```
 
 ## Import
 
 Your React Native app's screen resolution, app name, app ID, app version, device information will be automatically resolved and sent with each event.
 ```
-import ExpoMixpanelAnalytics from '@benawad/expo-mixpanel-analytics';
+import ExpoMixpanelAnalytics from '@olio-rent/expo-mixpanel-analytics';
 ```
 
 ## Usage
